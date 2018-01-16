@@ -134,3 +134,5 @@
 	include_once("footer.php");
 
  ?>
+ 
+ <script src="js/efeitos.js"></script>

@@ -100,9 +100,10 @@
 
 </footer>
 
-<script src="lib/jquery/jquery.min.js"></script>
+		<script src="lib/jquery/jquery.min.js"></script>
 		<script src="lib/owlcarousel/dist/owl.carousel.min.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="lib/raty/lib/jquery.raty.js"></script>
 
 	</body>
 </html>

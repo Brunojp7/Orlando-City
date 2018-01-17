@@ -119,6 +119,88 @@
 
 	</div>
 
+	<div id="mais-buscados" class="container">
+
+		<div class="row text-center title-default-roxo">
+			<h2>os mais buscados</h2>
+			<hr>
+		</div>
+
+
+		<div class="row">
+
+			<div class="col-md-3">
+
+				<div class="box-produto-info">
+
+					<a href="#">
+						<img src="img/produtos/iphone.jpg" alt="Iphone" class="produto-img">
+						<h3>Iphone Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, magni!</h3>
+						<div class="stars" data-score="5"></div>
+						<div class="text-qtd-reviews text-arial-cinza">(300)</div>
+						<div class="text-valor text-roxo">501,00</div>
+						<div class="text-parcelado text-arial-cinza">10x de R$ 50,00 sem juros.</div>
+					</a>
+
+				</div>
+
+			</div>
+
+			<div class="col-md-3">
+
+				<div class="box-produto-info">
+
+					<a href="#">
+						<img src="img/produtos/iphone.jpg" alt="Iphone" class="produto-img">
+						<h3>Iphone Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, magni!</h3>
+						<div class="stars" data-score="2.5"></div>
+						<div class="text-qtd-reviews text-arial-cinza">(300)</div>
+						<div class="text-valor text-roxo">501,00</div>
+						<div class="text-parcelado text-arial-cinza">10x de R$ 50,00 sem juros.</div>
+					</a>
+
+				</div>
+
+			</div>
+
+			<div class="col-md-3">
+
+				<div class="box-produto-info">
+
+					<a href="#">
+						<img src="img/produtos/iphone.jpg" alt="Iphone" class="produto-img">
+						<h3>Iphone Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, magni!</h3>
+						<div class="stars" data-score="4"></div>
+						<div class="text-qtd-reviews text-arial-cinza">(300)</div>
+						<div class="text-valor text-roxo">501,00</div>
+						<div class="text-parcelado text-arial-cinza">10x de R$ 50,00 sem juros.</div>
+					</a>
+
+				</div>
+
+			</div>
+
+			<div class="col-md-3">
+
+				<div class="box-produto-info">
+
+					<a href="#">
+						<img src="img/produtos/iphone.jpg" alt="Iphone" class="produto-img">
+						<h3>Iphone Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, magni!</h3>
+						<div class="stars" data-score="1"></div>
+						<div class="text-qtd-reviews text-arial-cinza">(300)</div>
+						<div class="text-valor text-roxo">501,00</div>
+						<div class="text-parcelado text-arial-cinza">10x de R$ 50,00 sem juros.</div>
+					</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
 </section>
 
 <?php 
@@ -149,6 +231,17 @@
 
 		$('#btn-destaque-next').on("click", function(){
 		  owlDestaque.trigger('next.owl.carousel');
+		});
+
+		$('.stars').each(function(){
+
+			$(this).raty({
+				starHalf:    'lib/raty/lib/images/star-half.png',                                // The name of the half star image.
+				starOff:     'lib/raty/lib/images/star-off.png',                                 // Name of the star image off.
+				starOn:      'lib/raty/lib/images/star-on.png',                                  // Name of the star image on.
+				score: 		 parseFloat($(this).data("score"))
+			});
+
 		});
 
 	});

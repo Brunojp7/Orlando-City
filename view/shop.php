@@ -185,43 +185,21 @@
 
 <script>
 
-	angular.module("shop", []).controller("destaque-controller", function($scope){
+	angular.module("shop", []).controller("destaque-controller", function($scope, $http){
 
 		$scope.produtos = [];
 
-		$scope.produtos.push({
-			nome_prod_longo:"Smartphone Motorola Moto X Play Dual Chip Desbloqueado Andoid 5.1",
-			foto_principal:"moto-x.png",
-			preco:"1.259",
-			centavos:"10",
-			parcelas:8,
-			parcela:"174,88",
-			total:"1.399,00"
-		});	
+		var initCarousel = function(){
 
-		$scope.produtos.push({
-			nome_prod_longo:"Iphone",
-			foto_principal:"moto-x.png",
-			preco:"1.259",
-			centavos:"10",
-			parcelas:8,
-			parcela:"174,88",
-			total:"1.399,00"
-		});	
+			var owlDestaque = $("#destaque-produtos");
 
-	});
-	
-	$(function(){
+			owlDestaque.owlCarousel({
 
-		var owlDestaque = $("#destaque-produtos");
-
-		owlDestaque.owlCarousel({
-
-			autoplay: true,
-  			autoplayTimeout:5000,
-			items: 1,
-  			singleItem: true,
-  			loop: true
+				autoplay: true,
+	  			autoplayTimeout:5000,
+				items: 1,
+	  			singleItem: true,
+	  			loop: true
 
 		});
 
@@ -232,6 +210,44 @@
 		$('#btn-destaque-next').on("click", function(){
 		  owlDestaque.trigger('next.owl.carousel');
 		});
+		}
+
+		$http({
+		  method: 'GET',
+		  url: 'produtos'
+		}).then(function successCallback(response) {
+			$scope.produtos = response.data;
+
+			setTimeout(initCarousel, 500);
+
+		  }, function errorCallback(response) {
+		   
+		  });
+
+		// $scope.produtos.push({
+		// 	nome_prod_longo:"Smartphone Motorola Moto X Play Dual Chip Desbloqueado Andoid 5.1",
+		// 	foto_principal:"moto-x.png",
+		// 	preco:"1.259",
+		// 	centavos:"10",
+		// 	parcelas:8,
+		// 	parcela:"174,88",
+		// 	total:"1.399,00"
+		// });	
+
+		// $scope.produtos.push({
+		// 	nome_prod_longo:"Iphone",
+		// 	foto_principal:"moto-x.png",
+		// 	preco:"1.259",
+		// 	centavos:"10",
+		// 	parcelas:8,
+		// 	parcela:"174,88",
+		// 	total:"1.399,00"
+		// });	
+
+	});
+	
+	$(function(){
+
 
 		$('.stars').each(function(){
 

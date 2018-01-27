@@ -4,9 +4,9 @@
 
 ?>
 
-<section>
+<section ng-controller="destaque-controller">
 
-	<div class="container" id="destaque-produtos-container" ng-controller="destaque-controller">
+	<div class="container" id="destaque-produtos-container">
 
 		<div id="destaque-produtos" class="owl-carousel" >
 			
@@ -103,68 +103,17 @@
 
 		<div class="row">
 
-			<div class="col-md-3">
+			<div class="col-md-3" ng-repeat="produto in buscados">
 
 				<div class="box-produto-info">
 
 					<a href="#">
-						<img src="img/produtos/iphone.jpg" alt="Iphone" class="produto-img">
-						<h3>Iphone Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, magni!</h3>
-						<div class="stars" data-score="5"></div>
-						<div class="text-qtd-reviews text-arial-cinza">(300)</div>
-						<div class="text-valor text-roxo">501,00</div>
-						<div class="text-parcelado text-arial-cinza">10x de R$ 50,00 sem juros.</div>
-					</a>
-
-				</div>
-
-			</div>
-
-			<div class="col-md-3">
-
-				<div class="box-produto-info">
-
-					<a href="#">
-						<img src="img/produtos/iphone.jpg" alt="Iphone" class="produto-img">
-						<h3>Iphone Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, magni!</h3>
-						<div class="stars" data-score="2.5"></div>
-						<div class="text-qtd-reviews text-arial-cinza">(300)</div>
-						<div class="text-valor text-roxo">501,00</div>
-						<div class="text-parcelado text-arial-cinza">10x de R$ 50,00 sem juros.</div>
-					</a>
-
-				</div>
-
-			</div>
-
-			<div class="col-md-3">
-
-				<div class="box-produto-info">
-
-					<a href="#">
-						<img src="img/produtos/iphone.jpg" alt="Iphone" class="produto-img">
-						<h3>Iphone Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, magni!</h3>
-						<div class="stars" data-score="4"></div>
-						<div class="text-qtd-reviews text-arial-cinza">(300)</div>
-						<div class="text-valor text-roxo">501,00</div>
-						<div class="text-parcelado text-arial-cinza">10x de R$ 50,00 sem juros.</div>
-					</a>
-
-				</div>
-
-			</div>
-
-			<div class="col-md-3">
-
-				<div class="box-produto-info">
-
-					<a href="#">
-						<img src="img/produtos/iphone.jpg" alt="Iphone" class="produto-img">
-						<h3>Iphone Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, magni!</h3>
-						<div class="stars" data-score="1"></div>
-						<div class="text-qtd-reviews text-arial-cinza">(300)</div>
-						<div class="text-valor text-roxo">501,00</div>
-						<div class="text-parcelado text-arial-cinza">10x de R$ 50,00 sem juros.</div>
+						<img src="img/produtos/{{produto.foto_principal}}" alt="{{produto.nome_prod_longo}}" class="produto-img">
+						<h3>{{produto.nome_prod_longo}}</h3>
+						<div class="stars" data-score="{{produto.media}}"></div>
+						<div class="text-qtd-reviews text-arial-cinza">({{produto.total_reviews}})</div>
+						<div class="text-valor text-roxo">R$ {{produto.total}}</div>
+						<div class="text-parcelado text-arial-cinza">{{produto.parcelas}}x de R$ {{produto.parcela}} sem juros.</div>
 					</a>
 
 				</div>
@@ -203,13 +152,13 @@
 
 		});
 
-		$('#btn-destaque-prev').on("click", function(){
-		  owlDestaque.trigger('prev.owl.carousel');
-		});
+			$('#btn-destaque-prev').on("click", function(){
+			  owlDestaque.trigger('prev.owl.carousel');
+			});
 
-		$('#btn-destaque-next').on("click", function(){
-		  owlDestaque.trigger('next.owl.carousel');
-		});
+			$('#btn-destaque-next').on("click", function(){
+			  owlDestaque.trigger('next.owl.carousel');
+			});
 		}
 
 		$http({
@@ -224,44 +173,33 @@
 		   
 		  });
 
-		// $scope.produtos.push({
-		// 	nome_prod_longo:"Smartphone Motorola Moto X Play Dual Chip Desbloqueado Andoid 5.1",
-		// 	foto_principal:"moto-x.png",
-		// 	preco:"1.259",
-		// 	centavos:"10",
-		// 	parcelas:8,
-		// 	parcela:"174,88",
-		// 	total:"1.399,00"
-		// });	
+		var initEstrelas = function(){
 
-		// $scope.produtos.push({
-		// 	nome_prod_longo:"Iphone",
-		// 	foto_principal:"moto-x.png",
-		// 	preco:"1.259",
-		// 	centavos:"10",
-		// 	parcelas:8,
-		// 	parcela:"174,88",
-		// 	total:"1.399,00"
-		// });	
+			$('.stars').each(function(){
+
+				$(this).raty({
+					starHalf:    'lib/raty/lib/images/star-half.png',                      
+					starOff:     'lib/raty/lib/images/star-off.png',                       
+					starOn:      'lib/raty/lib/images/star-on.png',   
+					score: 		 parseFloat($(this).data("score"))
+				});
+
+			});
+
+		}
+
+		$http({
+		  method: 'GET',
+		  url: 'produtos-mais-buscados'
+		}).then(function successCallback(response) {
+			$scope.buscados = response.data;
+
+			setTimeout(initEstrelas, 500);
+
+		  }, function errorCallback(response) {
+		   
+		  });	
 
 	});
 	
-	$(function(){
-
-
-		$('.stars').each(function(){
-
-			$(this).raty({
-				starHalf:    'lib/raty/lib/images/star-half.png',                                // The name of the half star image.
-				starOff:     'lib/raty/lib/images/star-off.png',                                 // Name of the star image off.
-				starOn:      'lib/raty/lib/images/star-on.png',                                  // Name of the star image on.
-				score: 		 parseFloat($(this).data("score"))
-			});
-
-		});
-
-	});
-
-
-
 </script>

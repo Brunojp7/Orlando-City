@@ -13,7 +13,9 @@
 			<div class="item" ng-repeat="produto in produtos">
 				
 				<div class="col-sm-6 col-imagem">
-					<img src="img/produtos/{{produto.foto_principal}}" alt="{{produto.nome_prod_longo}}">
+					<a href="produto-{{produto.id_prod}}">
+						<img src="img/produtos/{{produto.foto_principal}}" alt="{{produto.nome_prod_longo}}">
+					</a>
 				</div>
 				<div class="col-sm-6 col-descricao">
 					<h2>{{produto.nome_prod_longo}}</h2>
@@ -107,7 +109,7 @@
 
 				<div class="box-produto-info">
 
-					<a href="#">
+					<a href="produto-{{produto.id_prod}}">
 						<img src="img/produtos/{{produto.foto_principal}}" alt="{{produto.nome_prod_longo}}" class="produto-img">
 						<h3>{{produto.nome_prod_longo}}</h3>
 						<div class="stars" data-score="{{produto.media}}"></div>

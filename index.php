@@ -132,4 +132,42 @@ $app->get("/produto-:id_prod", function ($id_prod){
 });
 
 
+$app->get(
+    '/cart',
+    function () {
+        
+        require_once("view/cart.php");
+        
+    }
+);
+
+$app->get('/carrinho-dados', function(){
+
+    $sql = new Sql();
+
+    $result = $sql->select("CALL sp_carrinhos_get('".session_id()."')");
+
+    $carrinho = $result[0];
+
+    $sql = new Sql();
+
+    $carrinho['produtos'] = $sql->select("CALL sp_carrinhosprodutos_list(".$carrinho['id_car'].")");
+    
+    $carrinho['total_car'] = number_format((float)$carrinho['total_car'], 2, ",", "."); 
+    $carrinho['subtotal_car'] = number_format((float)$carrinho['subtotal_car'], 2, ",", ".");
+    $carrinho['frete_car'] = number_format((float)$carrinho['frete_car'], 2, ",", ".");
+
+
+    echo json_encode($carrinho);
+
+});
+
+$app->post('/carrinho', function(){
+
+    $request_body = json_decode(file_get_contents('php://input'), true);
+
+    var_dump($request_body);
+
+});
+
 $app->run();

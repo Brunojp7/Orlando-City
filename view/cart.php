@@ -27,11 +27,11 @@
 					<td class="col-xs-2">
 						<div class="input-group">
 					      <span class="input-group-btn">
-					        <button class="btn text-roxo" ng-click="addQtd(produto)" type="button"><i class="fa fa-chevron-down"></i></button>
+					        <button class="btn text-roxo" ng-click="removeQtd(produto)" type="button"><i class="fa fa-chevron-down"></i></button>
 					      </span>
 					      <input type="text" class="form-control" ng-model="produto.qtd_car">
 					      <span class="input-group-btn">
-					        <button class="btn text-roxo" ng-click="removeQtd(produto)" type="button"><i class="fa fa-chevron-up"></i></button>
+					        <button class="btn text-roxo" ng-click="addQtd(produto)" type="button"><i class="fa fa-chevron-up"></i></button>
 					      </span>
 					    </div>
 					</td>
@@ -150,7 +150,7 @@ angular.module("shop", []).controller("cart-controller", function($scope, $http)
 			})
 		}).then(function(response){
 
-			console.log(response);
+			carregarCarrinho();
 
 		}, function(){
 
@@ -162,7 +162,21 @@ angular.module("shop", []).controller("cart-controller", function($scope, $http)
 
 	$scope.removeQtd = function(_produto){
 
+		$http({
+			method:'DELETE',
+			url:'carrinho-produto',
+			data:JSON.stringify({
+				id_prod:_produto.id_prod
+			})
+		}).then(function(response){
 
+			carregarCarrinho();
+
+		}, function(){
+
+
+
+		});
 
 	};
 

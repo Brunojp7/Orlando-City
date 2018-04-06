@@ -24,8 +24,8 @@
 			<div id="menu-mobile" class="visible-xs">
 					
 				<ul class="list-unstyled">
-					<li><a href="videos.html">Videos</a></li>
-					<li><a href="#">Tickets</a></li>
+					<li><a href="/videos">Videos</a></li>
+					<li><a href="/shop">Shop</a></li>
 					<li><a href="#">News</a></li>
 					<li><a href="#">Schedule</a></li>
 				</ul>
@@ -37,7 +37,9 @@
 			</div>
 
 			<div class="container">
-				<img id="logotipo" src="img/orlando-logo.png" alt="Logotipo">
+				<a href="/">
+					<img id="logotipo" src="img/orlando-logo.png" alt="Logotipo">
+				</a>
 			</div>
 
 			<div class="header-black">
@@ -84,9 +86,9 @@
 
 					<nav id="menu" class="pull-right">
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="videos.html">Videos</a></li>
-							<li><a href="#">Tickets</a></li>
+							<li><a href="/">Home</a></li>
+							<li><a href="/videos">Videos</a></li>
+							<li><a href="/shop">Shop</a></li>
 							<li><a href="#">News</a></li>
 							<li><a href="#">Schedule</a></li>
 							<li class="search">

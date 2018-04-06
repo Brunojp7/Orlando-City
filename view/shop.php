@@ -28,7 +28,7 @@
 						<div class="text-parcelas text-arial-cinza">ou em até {{produto.parcelas}}x de R$ {{produto.parcela}}</div>
 						<div class="text-total text-arial-cinza">total a prazo R$ {{produto.total}}</div>	
 					</div>
-					<a href="#" class="btn btn-comprar text-roxo"><i class="fa fa-shopping-cart"></i> compre agora</a>
+					<a href="produto-{{produto.id_prod}}" class="btn btn-comprar text-roxo"><i class="fa fa-shopping-cart"></i> compre agora</a>
 				</div>
 
 			</div>
@@ -112,11 +112,12 @@
 					<a href="produto-{{produto.id_prod}}">
 						<img src="img/produtos/{{produto.foto_principal}}" alt="{{produto.nome_prod_longo}}" class="produto-img">
 						<h3>{{produto.nome_prod_longo}}</h3>
+					</a>
 						<div class="stars" data-score="{{produto.media}}"></div>
 						<div class="text-qtd-reviews text-arial-cinza">({{produto.total_reviews}})</div>
 						<div class="text-valor text-roxo">R$ {{produto.total}}</div>
 						<div class="text-parcelado text-arial-cinza">{{produto.parcelas}}x de R$ {{produto.parcela}} sem juros.</div>
-					</a>
+					
 
 				</div>
 

@@ -51,10 +51,10 @@
 
 									<div class="row-fluid visible-xs">
 										<div class="col-xs-6">
-											<a href="#" class="btn btn-footer"><i class="fa fa-map-marker"></i>Call</a>
+											<a href="#" class="btn btn-footer"><i class="fa fa-map-marker"></i>Location</a>
 										</div>
 										<div class="col-xs-6">
-											<a href="#" class="btn btn-footer"><i class="fa fa-phone"></i>Location</a>
+											<a href="#" class="btn btn-footer"><i class="fa fa-phone"></i>Call</a>
 										</div>
 									</div>
 
@@ -92,7 +92,7 @@
 				<div class="container copyright-mobile">
 					
 					<p class="pull-left">Copyright © Orlando City Soccer 2016. All rights reserved.</p>
-					<p class="pull-right text-roxo">Created by HCODE in Udemy</p>
+					<p class="pull-right text-roxo">Created by BParpagnoli</p>
 
 				</div>
 
